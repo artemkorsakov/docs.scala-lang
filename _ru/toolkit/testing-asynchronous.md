@@ -1,14 +1,17 @@
 ---
-title: How to write asynchronous tests?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Как писать асинхронные тесты?
 type: section
-description: Writing asynchronous tests using MUnit
+description: Написание асинхронных тестов с использованием MUnit
+language: ru
 num: 7
-languages: [ru]
 previous-page: testing-exceptions
 next-page: testing-resources
 ---
 
-{% include markdown.html path="_markdown/install-munit.md" %}
+{% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
 ## Asynchronous tests
 

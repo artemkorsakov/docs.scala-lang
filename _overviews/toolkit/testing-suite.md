@@ -3,6 +3,7 @@ title: How to write tests?
 type: section
 description: The basics of writing a test suite with MUnit
 num: 3
+languages: [ru]
 previous-page: testing-intro
 next-page: testing-run
 ---

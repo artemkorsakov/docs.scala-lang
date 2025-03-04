@@ -1,14 +1,17 @@
 ---
-title: How to test exceptions?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Как тестировать исключения?
 type: section
-description: Describe the intercept assertion
+description: Описание утверждений о перехвате
+language: ru
 num: 6
-languages: [ru]
 previous-page: testing-run-only
 next-page: testing-asynchronous
 ---
 
-{% include markdown.html path="_markdown/install-munit.md" %}
+{% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
 ## Intercepting an exception
 

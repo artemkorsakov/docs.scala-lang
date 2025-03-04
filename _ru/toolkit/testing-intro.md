@@ -8,7 +8,7 @@ description: Введение в библиотеку MUnit
 language: ru
 num: 2
 previous-page: introduction
-next-page:
+next-page: testing-suite
 ---
 
 MUnit — легковесная библиотека для тестирования. Она предоставляет единый стиль написания тестов, который можно быстро освоить.

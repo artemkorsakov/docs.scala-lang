@@ -1,14 +1,17 @@
 ---
-title: How to run a single test?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Как запустить одиночный тест?
 type: section
-description: About testOnly in the build tool and .only in MUnit
+description: О testOnly в инструменте сборки и .only в MUnit
+language: ru
 num: 5
-languages: [ru]
 previous-page: testing-run
 next-page: testing-exceptions
 ---
 
-{% include markdown.html path="_markdown/install-munit.md" %}
+{% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
 ## Running a single test suite
 

@@ -1,14 +1,17 @@
 ---
-title: What else can MUnit do?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Что ещё может делать MUnit?
 type: section
-description: A incomplete list of features of MUnit
+description: Неполный список возможностей MUnit
+language: ru
 num: 9
-languages: [ru]
 previous-page: testing-resources
 next-page: os-intro
 ---
 
-{% include markdown.html path="_markdown/install-munit.md" %}
+{% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
 ## Adding clues to get better error report
 

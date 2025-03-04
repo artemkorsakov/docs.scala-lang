@@ -1,14 +1,17 @@
 ---
-title: How to run tests?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Как запускать тесты?
 type: section
-description: Running the MUnit tests
+description: Выполнение MUnit тестов
+language: ru
 num: 4
-languages: [ru]
 previous-page: testing-suite
 next-page: testing-run-only
 ---
 
-{% include markdown.html path="_markdown/install-munit.md" %}
+{% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
 ## Running the tests
 

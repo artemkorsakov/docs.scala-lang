@@ -1,14 +1,17 @@
 ---
-title: How to manage the resources of a test?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Как управлять ресурсами в тестах?
 type: section
-description: Describe the functional fixtures
+description: Описание функциональных возможностей
+language: ru
 num: 8
-languages: [ru]
 previous-page: testing-asynchronous
 next-page: testing-what-else
 ---
 
-{% include markdown.html path="_markdown/install-munit.md" %}
+{% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
 ## `FunFixture`
 
