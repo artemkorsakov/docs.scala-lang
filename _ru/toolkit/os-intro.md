@@ -8,7 +8,7 @@ description: Введение в библиотеку OS-lib
 language: ru
 num: 10
 previous-page: testing-what-else
-next-page:
+next-page: os-read-directory
 ---
 
 OS-Lib — это библиотека для работы с файлами и процессами. Она является частью Scala Toolkit.

@@ -7,7 +7,7 @@ type: chapter
 description: Описание библиотеки uPickle.
 language: ru
 num: 16
-previous-page:
+previous-page: os-what-else
 next-page:
 ---
 

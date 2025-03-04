@@ -1,14 +1,17 @@
 ---
-title: What else can OS-Lib do?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Что ещё может делать OS-Lib?
 type: section
-description: An incomplete list of features of OS-Lib
+description: Неполный список возможностей OS-Lib
+language: ru
 num: 15
-languages: [ru]
 previous-page: os-run-process
 next-page: json-intro
 ---
 
-{% include markdown.html path="_markdown/install-os-lib.md" %}
+{% include markdown.html path="_markdown/_ru/install-os-lib.md" %}
 
 [OS-Lib on GitHub](https://github.com/com-lihaoyi/os-lib) has many additional examples of how to perform common tasks:
 - creating, moving, copying, removing files and folders,

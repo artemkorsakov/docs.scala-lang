@@ -1,21 +1,24 @@
 ---
-title: How to read a file?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Как прочитать файл?
 type: section
-description: Reading files from disk with OS-Lib
+description: Чтение файлов с диска с помощью OS-Lib
+language: ru
 num: 12
-languages: [ru]
 previous-page: os-read-directory
 next-page: os-write-file
 ---
 
-{% include markdown.html path="_markdown/install-os-lib.md" %}
+{% include markdown.html path="_markdown/_ru/install-os-lib.md" %}
 
 ## Reading a file
 
 Supposing we have the path to a file:
 
 {% tabs 'path' %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 ```scala mdoc
 val path: os.Path = os.root / "usr" / "share" / "dict" / "words"
 ```
@@ -25,7 +28,7 @@ val path: os.Path = os.root / "usr" / "share" / "dict" / "words"
 Then we can slurp the entire file into a string with `os.read`:
 
 {% tabs slurp %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 ```scala mdoc:compile-only
 val content: String = os.read(path)
 ```
@@ -37,7 +40,7 @@ To read the file as line at a time, substitute `os.read.lines`.
 We can find the longest word in the dictionary:
 
 {% tabs lines %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 ```scala mdoc:compile-only
 val lines: Seq[String]  = os.read.lines(path)
 println(lines.maxBy(_.size))
@@ -51,7 +54,7 @@ on the fly rather than read them all into memory at once. For example,
 if we just want to read the first line, the most efficient way is:
 
 {% tabs lines-stream %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
 ```scala mdoc:compile-only
 val lineStream: geny.Generator[String] = os.read.lines.stream(path)
 val firstLine: String = lineStream.head

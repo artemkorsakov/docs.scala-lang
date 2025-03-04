@@ -1,14 +1,17 @@
 ---
-title: How to run a process?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Как запустить процесс?
 type: section
-description: Starting external subprocesses with OS-Lib
+description: Запуск внешних подпроцессов с помощью OS-Lib
+language: ru
 num: 14
-languages: [ru]
 previous-page: os-write-file
 next-page: os-what-else
 ---
 
-{% include markdown.html path="_markdown/install-os-lib.md" %}
+{% include markdown.html path="_markdown/_ru/install-os-lib.md" %}
 
 ## Starting an external process
 

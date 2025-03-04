@@ -1,14 +1,17 @@
 ---
-title: How to write a file?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Как записать в файл?
 type: section
-description: Writing files to disk with OS-Lib
+description: Запись файлов на диск с помощью OS-Lib
+language: ru
 num: 13
-languages: [ru]
 previous-page: os-read-file
 next-page: os-run-process
 ---
 
-{% include markdown.html path="_markdown/install-os-lib.md" %}
+{% include markdown.html path="_markdown/_ru/install-os-lib.md" %}
 
 ## Writing a file all at once
 
