@@ -13,36 +13,45 @@ next-page: testing-exceptions
 
 {% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
-## Running a single test suite
+## Запуск одиночного тестового сценария
 
 {% tabs munit-unit-test-only class=tabs-build-tool %}
 {% tab 'Scala CLI' %}
-To run a single `example.MyTests` suite with Scala CLI, use the `--test-only` option of the `test` command.
+
+Чтобы запустить один сценарий `example.MyTests` с помощью Scala CLI, используйте опцию `--test-only` команды `test`.
+
 ```
 scala-cli test example --test-only example.MyTests
 ```
 
 {% endtab %}
 {% tab 'sbt' %}
-To run a single `example.MyTests` suite in sbt, use the `testOnly` task:
+
+Чтобы запустить один сценарий `example.MyTests` в sbt, используйте задачу `testOnly`:
+
 ```
 sbt:example> testOnly example.MyTests
 ```
+
 {% endtab %}
 {% tab 'Mill' %}
-To run a single `example.MyTests` suite in Mill, use the `testOnly` task:
+
+Чтобы запустить один сценарий `example.MyTests` в Mill, используйте задачу `testOnly`:
+
 ```
 ./mill example.test.testOnly example.MyTests
 ```
+
 {% endtab %}
 {% endtabs %}
 
-## Running a single test in a test suite
+## Запуск одного теста в тестовом сценарии
 
-Within a test suite file, you can select individual tests to run by temporarily appending `.only`, e.g.
+В файле тестового сценария вы можете выбрать отдельные тесты для запуска, временно добавив `.only`, например:
 
 {% tabs 'only-demo' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala mdoc
 class MathSuite extends munit.FunSuite {
   test("addition") {
@@ -53,8 +62,10 @@ class MathSuite extends munit.FunSuite {
   }
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
 class MathSuite extends munit.FunSuite:
   test("addition") {
@@ -64,19 +75,21 @@ class MathSuite extends munit.FunSuite:
     assert(3 * 7 == 21)
   }
 ```
+
 {% endtab %}
 {% endtabs %}
 
-In the above example, only the `"multiplication"` tests will run (i.e. `"addition"` is ignored).
-This is useful to quickly debug a specific test in a suite.
+В приведенном выше примере будут запущены только тесты `"multiplication"` (т.е. `"addition"` игнорируются).
+Это полезно для быстрой отладки определенного теста в наборе.
 
-## Alternative: excluding specific tests
+## Альтернатива: исключение определенных тестов
 
-You can exclude specific tests from running by appending `.ignore` to the test name.
-For example the following ignores the `"addition"` test, and run all the others:
+Вы можете исключить определенные тесты из запуска, добавив к имени теста `.ignore`.
+Например, следующий код игнорирует тест `"addition"` и запускает все остальные:
 
 {% tabs 'ignore-demo' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala mdoc:reset
 class MathSuite extends munit.FunSuite {
   test("addition".ignore) {
@@ -90,8 +103,10 @@ class MathSuite extends munit.FunSuite {
   }
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
 class MathSuite extends munit.FunSuite:
   test("addition".ignore) {
@@ -104,12 +119,13 @@ class MathSuite extends munit.FunSuite:
     assert(13 % 5 == 3)
   }
 ```
+
 {% endtab %}
 {% endtabs %}
 
-## Use tags to group tests, and run specific tags
+## Используйте теги для группировки тестов и запуска тестов только с определенными тегами
 
-MUnit lets you group and run tests across suites by tags, which are textual labels.
-[The MUnit docs][munit-tags] have instructions on how to do this.
+MUnit позволяет группировать и запускать тесты по наборам по тегам, которые являются текстовыми метками.
+В [документации MUnit][munit-tags] есть инструкции о том, как это сделать.
 
 [munit-tags]: https://scalameta.org/munit/docs/filtering.html#include-and-exclude-tests-based-on-tags

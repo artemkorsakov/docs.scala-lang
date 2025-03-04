@@ -15,13 +15,14 @@ next-page: testing-what-else
 
 ## `FunFixture`
 
-In MUnit, we use functional fixtures to manage resources in a concise and safe way.
-A `FunFixture` creates one resource for each test, ensuring that each test runs in isolation from the others.
+В MUnit мы используем функциональные фикстуры для управления ресурсами лаконичным и безопасным способом.
+`FunFixture` создает один ресурс для каждого теста, гарантируя, что каждый тест выполняется изолированно от других.
 
-In a test suite, you can define and use a `FunFixture` as follows:
+В тестовом сценарии вы можете определить и использовать `FunFixture` следующим образом:
 
 {% tabs 'resources-1' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala mdoc
 class FileTests extends munit.FunSuite {
   val usingTempFile: FunFixture[os.Path] = FunFixture(
@@ -35,8 +36,10 @@ class FileTests extends munit.FunSuite {
   }
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
 class FileTests extends munit.FunSuite:
   val usingTempFile: FunFixture[os.Path] = FunFixture(
@@ -49,58 +52,68 @@ class FileTests extends munit.FunSuite:
     assertEquals(obtained, "Hello, World!")
   }
 ```
+
 {% endtab %}
 {% endtabs %}
 
-`usingTempFile` is a fixture of type `FunFixture[os.Path]`.
-It contains two functions:
- - The `setup` function, of type `TestOptions => os.Path`, creates a new temporary file.
- - The `teardown` function, of type `os.Path => Unit`, deletes this temporary file.
+`usingTempFile` является фикстурой типа `FunFixture[os.Path]`.
+Он содержит две функции:
 
-We use the `usingTempFile` fixture to define a test that needs a temporary file.
-Notice that the body of the test takes a `tempFile`, of type `os.Path`, as parameter.
-The fixture automatically creates this temporary file, calls its `setup` function, and cleans it up after the test by calling `teardown`.
+- Функция `setup` типа `TestOptions => os.Path` создает новый временный файл.
+- Функция `teardown` типа `os.Path => Unit` удаляет этот временный файл.
 
-In the example, we used a fixture to manage a temporary file.
-In general, fixtures can manage other kinds of resources, such as a temporary folder, a temporary table in a database, a connection to a local server, and so on.
+Мы используем фикстуру `usingTempFile` для определения теста, которому нужен временный файл.
+Обратите внимание, что тело теста принимает `tempFile` типа `os.Path` в качестве параметра.
+Фикстура автоматически создает этот временный файл, вызывает его функцию `setup`
+и очищает его после окончания теста, вызывая `teardown`.
 
-## Composing `FunFixture`s
+В примере мы использовали фикстуру для управления временным файлом.
+В общем случае фикстуры могут управлять другими видами ресурсов,
+такими как временная папка, временная таблица в базе данных, подключение к локальному серверу и т.д.
 
-In some tests, you may need more than one resource.
-You can use `FunFixture.map2` to compose two functional fixtures into one.
+## Композиция `FunFixture`
+
+В некоторых тестах вам может понадобиться более одного ресурса.
+Вы можете использовать `FunFixture.map2` для объединения двух функциональных фикстур в одно.
 
 {% tabs 'resources-2' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 val using2TempFiles: FunFixture[(os.Path, os.Path)] =
   FunFixture.map2(usingTempFile, usingTempFile)
 
 using2TempFiles.test("merge two files") {
   (file1, file2) =>
-    // body of the test
+    // тело теста
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
 val using2TempFiles: FunFixture[(os.Path, os.Path)] =
   FunFixture.map2(usingTempFile, usingTempFile)
 
 using2TempFiles.test("merge two files") {
   (file1, file2) =>
-    // body of the test
+    // тело теста
 }
 ```
+
 {% endtab %}
 {% endtabs %}
 
-Using `FunFixture.map2` on a `FunFixture[A]` and a `FunFixture[B]` returns a `FunFixture[(A, B)]`.
+Использование `FunFixture.map2` на `FunFixture[A]` и `FunFixture[B]` возвращает `FunFixture[(A, B)]`.
 
-## Other fixtures
+## Другие фикстуры
 
-`FunFixture` is the recommended type of fixture because:
-- it is explicit: each test declares the resource they need,
-- it is safe to use: each test uses its own resource in isolation.
+`FunFixture` является рекомендуемым типом фикстуры, поскольку:
 
-For more flexibility, `MUnit` contains other types of fixtures: the reusable fixture, the ad-hoc fixture and the asynchronous fixture.
-Learn more about them in the [MUnit documentation](https://scalameta.org/munit/docs/fixtures.html).
+- это явно: каждый тест объявляет ресурс, который ему нужен,
+- его безопасно использовать: каждый тест использует свой собственный ресурс изолированно.
+
+Для большей гибкости MUnit содержит другие типы фикстур:
+повторно используемая фикстура, ad-hoc фикстура и асинхронная фикстура.
+Узнайте больше о них в [документации MUnit](https://scalameta.org/munit/docs/fixtures.html).

@@ -13,27 +13,31 @@ next-page: testing-asynchronous
 
 {% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
-## Intercepting an exception
+## Перехват исключения
 
-In a test, you can use `intercept` to check that your code throws an exception.
+В тесте вы можете использовать `intercept`, чтобы проверить, выдает ли ваш код исключение.
 
 {% tabs 'intercept-1' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala mdoc
 import java.nio.file.NoSuchFileException
 
 class FileTests extends munit.FunSuite {
   test("read missing file") {
     val missingFile = os.pwd / "missing.txt"
-    
-    intercept[NoSuchFileException] { 
+
+    intercept[NoSuchFileException] {
+      // код, который должен выдавать исключение
       os.read(missingFile)
     }
   }
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
 import java.nio.file.NoSuchFileException
 
@@ -41,31 +45,34 @@ class FileTests extends munit.FunSuite:
   test("read missing file") {
     val missingFile = os.pwd / "missing.txt"
     intercept[NoSuchFileException] {
-      // the code that should throw an exception
+      // код, который должен выдавать исключение
       os.read(missingFile)
     }
   }
 ```
+
 {% endtab %}
 {% endtabs %}
 
-The type parameter of the `intercept` assertion is the expected exception.
-Here it is `NoSuchFileException`.
-The body of the `intercept` assertion contains the code that should throw the exception.
+Параметр типа утверждения `intercept` — ожидаемое исключение.
+Вот оно - `NoSuchFileException`.
+Тело утверждения `intercept` содержит код, который должен выдать исключение.
 
-The test passes if the code throws the expected exception and it fails otherwise.
+Тест считается пройденным, если код выдает ожидаемое исключение, в противном случае тест завершается неудачей.
 
-The `intercept` method returns the exception that is thrown.
-You can check more assertions on it.
+Метод `intercept` возвращает выдаваемое исключение, на котором можно проверить дополнительные утверждения.
 
 {% tabs 'intercept-2' %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 val exception = intercept[NoSuchFileException](os.read(missingFile))
 assert(clue(exception.getMessage).contains("missing.txt"))
 ```
+
 {% endtab %}
 {% endtabs %}
 
-You can also use the more concise `interceptMessage` method to test the exception and its message in a single assertion.
-Learn more about it in the [MUnit documentation](https://scalameta.org/munit/docs/assertions.html#interceptmessage).
+Вы также можете использовать более лаконичный метод `interceptMessage` для проверки исключения
+и его сообщения в одном утверждении.
+Узнайте больше об этом в [документации MUnit](https://scalameta.org/munit/docs/assertions.html#interceptmessage).

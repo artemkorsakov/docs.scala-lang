@@ -13,15 +13,16 @@ next-page: testing-resources
 
 {% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
-## Asynchronous tests
+## Асинхронные тесты
 
-In Scala, it's common for an *asynchronous* method to return a `Future`.
-MUnit offers special support for `Future`s.
+В Scala асинхронный метод часто возвращает `Future`.
+MUnit предлагает специальную поддержку для `Future`-ов.
 
-For example, consider an asynchronous variant of a `square` method:
+Например, рассмотрим асинхронный вариант метода `square`:
 
 {% tabs 'async-1' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala mdoc
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -30,8 +31,10 @@ object AsyncMathLib {
     Future(x * x)
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -39,18 +42,21 @@ object AsyncMathLib:
   def square(x: Int)(using ExecutionContext): Future[Int] =
     Future(x * x)
 ```
+
 {% endtab %}
 {% endtabs %}
 
-A test itself can return a `Future[Unit]`.
-MUnit will wait behind the scenes for the resulting `Future` to complete, failing the test if any assertion fails.
+Тест сам по себе может возвращать `Future[Unit]`.
+MUnit будет ждать в фоновом режиме завершения результата `Future`,
+завершая тест с ошибкой, если какое-либо утверждение не выполняется.
 
-You can therefore write the test as follows:
+Поэтому вы можете написать тест следующим образом:
 
 {% tabs 'async-3' class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala mdoc
-// Import the global execution context, required to call async methods
+// Импорт глобального контекста выполнения, необходимого для вызова асинхронных методов
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class AsyncMathLibTests extends munit.FunSuite {
@@ -65,10 +71,12 @@ class AsyncMathLibTests extends munit.FunSuite {
   }
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
-// Import the global execution context, required to call async methods
+// Импорт глобального контекста выполнения, необходимого для вызова асинхронных методов
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class AsyncMathLibTests extends munit.FunSuite:
@@ -81,12 +89,14 @@ class AsyncMathLibTests extends munit.FunSuite:
       assertEquals(squareOfMinus4, 16)
   }
 ```
+
 {% endtab %}
 {% endtabs %}
 
-The test first asynchronously computes `square(3)` and `square(-4)`.
-Once both computations are completed, and if they are both successful, it proceeds with the calls to `assertEquals`.
-If any of the assertion fails, the resulting `Future[Unit]` fails, and MUnit will cause the test to fail.
+Тест вначале асинхронно вычисляет `square(3)` и `square(-4)`.
+После завершения вычислений, если они оба успешны, тест переходит к вызовам `assertEquals`.
+Если какое-либо из утверждений не выполняется, не выполняется результат `Future[Unit]`,
+и MUnit приведет к сбою теста.
 
-You may read more about asynchronous tests [in the MUnit documentation](https://scalameta.org/munit/docs/tests.html#declare-async-test).
-It shows how to use other asynchronous types besides `Future`.
+Подробнее об асинхронных тестах можно прочитать в [документации MUnit](https://scalameta.org/munit/docs/tests.html#declare-async-test).
+Там показано, как использовать другие асинхронные типы помимо `Future`.

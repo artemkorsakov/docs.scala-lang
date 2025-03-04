@@ -13,12 +13,14 @@ next-page: os-intro
 
 {% include markdown.html path="_markdown/_ru/install-munit.md" %}
 
-## Adding clues to get better error report
+## Добавление подсказок для получения лучшего отчета об ошибках
 
-Use `clue` inside an `assert` to a get a better error report when the assertion fails.
+Используйте `clue` внутри `assert` для получения более точного отчета об ошибке,
+если утверждение не выполняется.
 
 {% tabs clues %}
 {% tab 'Scala 2 and 3' %}
+
 ```scala
 assert(clue(List(a).head) > clue(b))
 // munit.FailException: assertion failed
@@ -27,19 +29,22 @@ assert(clue(List(a).head) > clue(b))
 //   b: Int = 2
 // }
 ```
+
 {% endtab %}
 {% endtabs %}
 
-Learn more about clues in the [MUnit documentation](https://scalameta.org/munit/docs/assertions.html#assert).
+Подробнее о подсказках читайте в [документации MUnit](https://scalameta.org/munit/docs/assertions.html#assert).
 
-## Writing environment-specific tests
+## Написание тестов, специфичных для конкретной среды
 
-Use `assume` to write environment-specific tests.
-`assume` can contain a boolean condition. You can check the operating system, the Java version, a Java property, an environment variable, or anything else.
-A test is skipped if one of its assumptions isn't met.
+Используется `assume` для написания тестов, специфичных для среды.
+`assume` может содержать логическое условие.
+Вы можете проверить операционную систему, версию Java, свойство Java, переменную среды или что-либо еще.
+Тест пропускается, если одно из его предположений не выполняется.
 
 {% tabs assumption class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 import scala.util.Properties
 
@@ -48,8 +53,10 @@ test("home directory") {
   assert(os.home.toString.startsWith("/home/"))
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
 import scala.util.Properties
 
@@ -58,32 +65,36 @@ test("home directory") {
   assert(os.home.toString.startsWith("/home/"))
 }
 ```
+
 {% endtab %}
 {% endtabs %}
 
-Learn more about filtering tests in the [MUnit documentation](https://scalameta.org/munit/docs/filtering.html).
+Подробнее о фильтруемых тестах читайте в [документации MUnit](https://scalameta.org/munit/docs/filtering.html).
 
-## Tagging flaky tests
+## Пометка нестабильных тестов
 
-You can tag a test with `flaky` to mark it as being flaky.
-Flaky tests can be skipped by setting the `MUNIT_FLAKY_OK` environment variable to `true`.
+Вы можете пометить тест тегом `flaky`, чтобы отметить его как нестабильный.
+Нестабильные тесты можно пропустить, установив переменную окружения `MUNIT_FLAKY_OK` на `true`.
 
 {% tabs flaky class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala
 test("requests".flaky) {
-  // I/O heavy tests that sometimes fail
+  // Тяжелые тесты ввода-вывода, которые иногда терпят неудачу
 }
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
 test("requests".flaky) {
-  // I/O heavy tests that sometimes fail
+  // Тяжелые тесты ввода-вывода, которые иногда терпят неудачу
 }
 ```
+
 {% endtab %}
 {% endtabs %}
 
-Learn more about flaky tests in the [MUnit documentation](https://scalameta.org/munit/docs/tests.html#tag-flaky-tests)
-
+Подробнее о нестабильных тестах читайте в [документации MUnit](https://scalameta.org/munit/docs/tests.html#tag-flaky-tests).
