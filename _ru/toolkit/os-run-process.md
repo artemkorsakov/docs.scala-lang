@@ -13,71 +13,75 @@ next-page: os-what-else
 
 {% include markdown.html path="_markdown/_ru/install-os-lib.md" %}
 
-## Starting an external process
+## Запуск внешнего процесса
 
-To set up a process, use `os.proc`, then to actually start it,
-`call()`:
+Чтобы настроить процесс, используйте `os.proc`, а затем, чтобы запустить его, `call()`:
 
 {% tabs 'touch' %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
+
 ```scala mdoc:compile-only
 val path: os.Path = os.pwd / "output.txt"
 println(os.exists(path))
-// prints: false
+// печатает: false
 val result: os.CommandResult = os.proc("touch", path).call()
 println(result.exitCode)
-// prints: 0
+// печатает: 0
 println(os.exists(path))
-// prints: true
+// печатает: true
 ```
+
 {% endtab %}
 {% endtabs %}
 
-Note that `proc` accepts both strings and `os.Path`s.
+Обратите внимание, что `proc` принимает как строки, так и `os.Path`-ы.
 
-## Reading the output of a process
+## Чтение выходных данных процесса
 
-(The particular commands in the following examples might not exist on all
-machines.)
+> Конкретные команды в следующих примерах могут отсутствовать на некоторых компьютерах.
 
-Above we saw that `call()` returned an `os.CommandResult`. We can
-access the result's entire output with `out.text()`, or as lines
-with `out.lines()`.
+Выше мы видели, что `call()` вернул `os.CommandResult`.
+Мы можем получить доступ ко всему выводу результата с помощью `out.text()`,
+или в виде строк с помощью `out.lines()`.
 
-For example, we could use `bc` to do some math for us:
+Например, мы могли бы использовать `bc` для выполнения некоторых математических расчетов:
 
 {% tabs 'bc' %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
+
 ```scala mdoc:compile-only
 val res: os.CommandResult = os.proc("bc", "-e", "2 + 2").call()
 val text: String = res.out.text()
 println(text.trim.toInt)
-// prints: 4
+// печатает: 4
 ```
+
 {% endtab %}
 {% endtabs %}
 
-Or have `cal` show us a calendar:
+Или `cal` для показа календаря:
 
 {% tabs 'cal' %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
+
 ```scala mdoc:compile-only
 val res: os.CommandResult = os.proc("cal", "-h", "2", "2023").call()
 res.out.lines().foreach(println)
-// prints:
+// печатает:
 //   February 2023
 // Su Mo Tu We Th Fr Sa
 //          1  2  3  4
 // ...
 ```
+
 {% endtab %}
 {% endtabs %}
 
-## Customizing the process
+## Настройка процесса
 
-`call()` takes various optional arguments, too many to explain
-individually here. For example, you can set the working directory
-(`cwd = ...`), set environment variables (`env = ...`), or redirect
-input and output (`stdin = ...`, `stdout = ...`, `stderr = ...`).
-Find more information about the `call` method on [the README of OS-Lib](https://github.com/com-lihaoyi/os-lib#osproccall).
-
+`call()` принимает множество необязательных аргументов,
+слишком много, чтобы попытаться описать их здесь по отдельности.
+Например, вы можете задать рабочий каталог (`cwd = ...`),
+задать переменные окружения (`env = ...`)
+или перенаправить ввод и вывод (`stdin = ..., stdout = ..., stderr = ...`).
+Дополнительную информацию о методе `call` можно найти в [README OS-Lib](https://github.com/com-lihaoyi/os-lib#osproccall).

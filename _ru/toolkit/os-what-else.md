@@ -13,11 +13,14 @@ next-page: json-intro
 
 {% include markdown.html path="_markdown/_ru/install-os-lib.md" %}
 
-[OS-Lib on GitHub](https://github.com/com-lihaoyi/os-lib) has many additional examples of how to perform common tasks:
-- creating, moving, copying, removing files and folders,
-- reading filesystem metadata and permissions,
-- spawning subprocesses,
-- watching changes in folders,
-- interoperating with `java.io.File` and `java.nio.Path`.
+[OS-Lib на GitHub](https://github.com/com-lihaoyi/os-lib) содержит множество дополнительных примеров того,
+как выполнять типичные задачи:
 
-See also Chapter 7 of Li Haoyi's book [_Hands-On Scala Programming_](https://www.handsonscala.com). (Li Haoyi is the author of OS-Lib.)
+- создание, перемещение, копирование, удаление файлов и папок,
+- чтение метаданных и разрешений файловой системы,
+- порождающие подпроцессы,
+- просмотр изменений в папках,
+- взаимодействие с `java.io.File` и `java.nio.Path`.
+
+См. также главу 7 книги Li Haoyi [_Hands-On Scala Programming_](https://www.handsonscala.com).
+(Li Haoyi является автором OS-Lib.)

@@ -13,46 +13,51 @@ next-page: os-run-process
 
 {% include markdown.html path="_markdown/_ru/install-os-lib.md" %}
 
-## Writing a file all at once
+## Запись файла целиком за один раз
 
-`os.write` writes the supplied string to a new file:
+`os.write` записывает предоставленную строку в новый файл:
 
 {% tabs write %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
+
 ```scala mdoc
 val path: os.Path = os.temp.dir() / "output.txt"
 os.write(path, "hello\nthere\n")
 println(os.read.lines(path).size)
-// prints: 2
+// печатает: 2
 ```
+
 {% endtab %}
 {% endtabs %}
 
-## Overwriting or appending
+## Перезапись или добавление
 
-`os.write` throws an exception if the file already exists:
+`os.write` выдает исключение, если файл уже существует:
 
 {% tabs already-exists %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
+
 ```scala mdoc:crash
 os.write(path, "this will fail")
-// this exception is thrown:
+// выбрасывается исключение:
 // java.nio.file.FileAlreadyExistsException
 ```
+
 {% endtab %}
 {% endtabs %}
 
-To avoid this, use `os.write.over` to replace the existing
-contents.
+Чтобы избежать этого, используйте `os.write.over` для замены существующего содержимого.
 
-You can also use `os.write.append` to add more to the end:
+Вы также можете использовать `os.write.append`, чтобы добавить что-то в конец:
 
 {% tabs append %}
-{% tab 'Scala 2 and 3' %}
+{% tab 'Scala 2 и 3' %}
+
 ```scala mdoc
 os.write.append(path, "two more\nlines\n")
 println(os.read.lines(path).size)
-// prints: 4
+// печатает: 4
 ```
+
 {% endtab %}
 {% endtabs %}
