@@ -7,7 +7,7 @@ type: chapter
 description: Введение в библиотеку sttp
 language: ru
 num: 23
-previous-page:
+previous-page: json-what-else
 next-page:
 ---
 

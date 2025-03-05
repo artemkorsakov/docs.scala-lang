@@ -3,6 +3,7 @@ title: How to modify JSON?
 type: section
 description: Modifying JSON with uPickle.
 num: 18
+languages: [ru]
 previous-page: json-parse
 next-page: json-deserialize
 ---

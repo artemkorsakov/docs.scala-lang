@@ -1,18 +1,23 @@
 ---
-title: What else can uPickle do?
+layout: multipage-overview
+partof: toolkit
+overview-name: "Scala инструментарий"
+title: Что еще может uPickle?
 type: section
-description: An incomplete list of features of uPickle
+description: Неполный список возможностей uPickle
+language: ru
 num: 22
-languages: [ru]
 previous-page: json-files
 next-page: http-client-intro
 ---
 
-{% include markdown.html path="_markdown/install-upickle.md" %}
-## Construct a new JSON structure with uJson
+{% include markdown.html path="_markdown/_ru/install-upickle.md" %}
+
+## Создание новой JSON-структуры с помощью uJson
 
 {% tabs construct%}
-{% tab 'Scala 2 and Scala 3' %}
+{% tab 'Scala 2 и Scala 3' %}
+
 ```scala mdoc
 val obj: ujson.Value = ujson.Obj(
   "library" -> "upickle",
@@ -20,17 +25,19 @@ val obj: ujson.Value = ujson.Obj(
   "documentation" -> "https://com-lihaoyi.github.io/upickle/",
 )
 ```
+
 {% endtab %}
 {% endtabs %}
 
-Learn more about constructing JSON in the [uJson documentation](https://com-lihaoyi.github.io/upickle/#Construction).
+Узнайте больше о создании JSON в [документации uJson](https://com-lihaoyi.github.io/upickle/#Construction).
 
-## Defining custom JSON serialization
+## Определение пользовательской сериализации JSON
 
-You can customize the `ReadWriter` of your data type by mapping the `ujson.Value`, like this:
+Вы можете настроить `ReadWriter` для вашего типа данных, преобразуя `ujson.Value`, например:
 
 {% tabs custom-serializer class=tabs-scala-version %}
 {% tab 'Scala 2' %}
+
 ```scala mdoc
 import upickle.default._
 
@@ -47,10 +54,12 @@ object Bar {
 val bar = Bar(5, "bar")
 val json = upickle.default.write(bar)
 println(json)
-// prints: [5, "bar"]
+// выводит: [5, "bar"]
 ```
+
 {% endtab %}
 {% tab 'Scala 3' %}
+
 ```scala
 import upickle.default.*
 
@@ -66,10 +75,12 @@ object Bar:
 val bar = Bar(5, "bar")
 val json = upickle.default.write(bar)
 println(json)
-// prints: [5, "bar"]
+// выводит: [5, "bar"]
 ```
+
 {% endtab %}
 {% endtabs %}
 
-Learn more about custom JSON serialization in the [uPickle documentation](https://com-lihaoyi.github.io/upickle/#Customization).
+Узнайте больше о пользовательской сериализации JSON в [документации uPickle](https://com-lihaoyi.github.io/upickle/#Customization).
 
+---

@@ -8,7 +8,7 @@ description: Описание библиотеки uPickle.
 language: ru
 num: 16
 previous-page: os-what-else
-next-page:
+next-page: json-parse
 ---
 
 uPickle — это облегченная библиотека сериализации для Scala.

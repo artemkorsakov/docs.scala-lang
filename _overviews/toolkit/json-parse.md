@@ -3,6 +3,7 @@ title: How to access values inside JSON?
 type: section
 description: Accessing JSON values using ujson.
 num: 17
+languages: [ru]
 previous-page: json-intro
 next-page: json-modify
 ---

@@ -3,6 +3,7 @@ title: How to deserialize JSON to an object?
 type: section
 description: Parsing JSON to a custom data type
 num: 19
+languages: [ru]
 previous-page: json-modify
 next-page: json-serialize
 ---

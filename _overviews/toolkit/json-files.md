@@ -3,6 +3,7 @@ title: How to read and write JSON files?
 type: section
 description: Reading and writing JSON files using UPickle and OSLib
 num: 21
+languages: [ru]
 previous-page: json-serialize
 next-page: json-what-else
 ---

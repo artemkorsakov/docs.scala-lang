@@ -3,6 +3,7 @@ title: How to serialize an object to JSON?
 type: section
 description: How to write JSON with Scala Toolkit.
 num: 20
+languages: [ru]
 previous-page: json-deserialize
 next-page: json-files
 ---
